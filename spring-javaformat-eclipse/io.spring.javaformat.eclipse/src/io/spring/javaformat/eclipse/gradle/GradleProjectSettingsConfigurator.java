@@ -77,7 +77,7 @@ public class GradleProjectSettingsConfigurator implements ProjectConfigurator {
 		if (build.isPresent()) {
 			ModelProvider modelProvider = ((InternalGradleBuild) build.get()).getModelProvider();
 			Collection<EclipseProject> rootProjects = modelProvider.fetchModels(EclipseProject.class,
-					FetchStrategy.FORCE_RELOAD, this.tokenSource, monitor);
+					FetchStrategy.FORCE_RELOAD, this.tokenSource, monitor).values();
 			EclipseProject eclipseProject = findProjectByName(rootProjects, project.getName());
 			if (hasSpringFormatPlugin(eclipseProject)) {
 				ProjectSettingsFilesLocator locator = new ProjectSettingsFilesLocator(getSearchFolders(rootProjects));
